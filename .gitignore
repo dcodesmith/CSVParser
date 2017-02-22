@@ -1,0 +1,8 @@
+test.csv
+.DS_Store
+.vscode
+*.txt
+
+coverage
+dist
+node_modules
