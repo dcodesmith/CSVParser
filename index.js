@@ -1,5 +1,5 @@
 const csv = require('fast-csv');
-const _ = require('lodash');
+const find = require('lodash/fp/find');
 const Joi = require('joi');
 
 const schema = require('./validation-schema');
@@ -69,7 +69,7 @@ module.exports = function (csvData, channels, callbackFn) {
     };
 
     const onTransform = (row) => {
-      const channel = _.find(channels, { code: row.channelCode });
+      const channel = find(channels, { code: row.channelCode });
 
       delete row.channelCode;
 
