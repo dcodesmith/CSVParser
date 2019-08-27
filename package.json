@@ -4,18 +4,25 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && node dist/index.js",
     "test": "jest",
-    "coverage": "yarn test --coverage",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "coverage": "jest --coverage",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
+    "lint": "tslint -c tslint.json src/**/*.ts --fix --format verbose"
   },
   "author": "Afees D Kolawole",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^15.1.1",
+    "@types/hapi__joi": "^15.0.3",
+    "@types/joi": "^14.3.3",
     "fast-csv": "^3.4.0",
-    "joi": "^10.2.2"
+    "joi": "^14.3.1"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.18",
     "husky": ">=1",
     "jest": "^24.9.0",
     "lint-staged": ">=8",
@@ -30,7 +37,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css,json,md}": [
+    "*.{ts,json}": [
       "prettier --write",
       "git add"
     ]
