@@ -4,20 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "author": "Afees D Kolawole",
   "license": "ISC",
   "dependencies": {
     "fast-csv": "^2.3.1",
-    "joi": "^10.2.2",
-    "lodash": "^4.17.4"
+    "joi": "^10.2.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^3.2.0",
-    "sinon": "^2.0.0-pre.4"
+    "jest": "^24.9.0"
   }
 }
