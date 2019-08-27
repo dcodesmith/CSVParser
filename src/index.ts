@@ -1,6 +1,6 @@
-const csv = require('fast-csv');
+import csv = require('fast-csv');
 
-const schema = require('./validation-schema');
+import schema = require('./validation-schema');
 
 module.exports = (csvData, channels) => 
   new Promise((resolve, reject) => {
@@ -11,8 +11,8 @@ module.exports = (csvData, channels) =>
     const onValidateRow = (row, next) => {
       let isRowValid = true;
 
-      schema.validate(row, (err) => {
-        if (err) {
+      schema.validate(row, error => {
+        if (error) {
           isRowValid = !isRowValid;
         }
 
@@ -44,10 +44,11 @@ module.exports = (csvData, channels) =>
     const onTransform = row => {
       const channel = channels.find(({ code }) =>  code === row.channelCode);
 
-      delete row.channelCode;
       row.channel = channel.id;
 
-      return row;
+      const { channelCode, ...rest } = row;
+      console.log(rest);
+      return rest;
     };
 
     csv

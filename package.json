@@ -2,10 +2,12 @@
   "name": "csv",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "start": "tsc && node dist/app.js",
     "test": "jest",
-    "coverage": "yarn test --coverage"
+    "coverage": "yarn test --coverage",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "author": "Afees D Kolawole",
   "license": "ISC",
@@ -14,6 +16,23 @@
     "joi": "^10.2.2"
   },
   "devDependencies": {
-    "jest": "^24.9.0"
+    "husky": ">=1",
+    "jest": "^24.9.0",
+    "lint-staged": ">=8",
+    "prettier": "^1.18.2",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
