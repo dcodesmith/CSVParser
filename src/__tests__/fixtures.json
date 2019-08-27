@@ -1,0 +1,8 @@
+{
+  "channels": [
+    { "id": "92cb91bdc3464f14678934af", "code": "fv56lj0", "name": "Channel A" },
+    { "id": "00cb91ccc3464f14678934da", "code": "hq09ky1", "name": "Channel B" },
+    { "id": "79cb91bdc3464f09678934ba", "code": "kl05fx3", "name": "Channel C" },
+    { "id": "92cb91bdc3464f14678934fa", "code": "vf63ko9", "name": "Channel D" }
+  ]
+}
