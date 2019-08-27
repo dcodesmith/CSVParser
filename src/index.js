@@ -51,7 +51,7 @@ module.exports = (csvData, channels) =>
     };
 
     csv
-      .fromStream(csvData, options)
+      .parseStream(csvData, options)
       .transform(onTransform)
       .validate(onValidateRow)
       .on('data-invalid', onInvalidRow)
