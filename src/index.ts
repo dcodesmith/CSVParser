@@ -1,5 +1,11 @@
 import csv from 'fast-csv';
 
+export type RowValidateCallback = (
+  error?: Error | null,
+  isValid?: boolean,
+  reason?: string
+) => void;
+
 import schema from './validation-schema';
 
 interface IProgramme {
@@ -30,7 +36,7 @@ export default (csvData: NodeJS.ReadableStream, channels: IChannel[]): Promise<I
     const validRows = [];
     const invalidRows = [];
 
-    const onValidateRow = (row: IProgramme, next) => {
+    const onValidateRow = (row: IProgramme, next: RowValidateCallback) => {
       let isRowValid = true;
 
       schema.validate(row, error => {
