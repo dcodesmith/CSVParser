@@ -1,11 +1,11 @@
-const stream = require('stream');
-const fs = require('fs');
+import * as fs from 'fs';
+import * as stream from 'stream';
 
-const CSVParser = require('..');
+import CSVParser from '..';
 
-const { channels } = require('./fixtures.json');
+import { channels } from './fixtures.json';
 
-const getCSVBuffer = fileName => {
+const getCSVBuffer = (fileName: string): NodeJS.ReadableStream => {
   const bufferStream = new stream.PassThrough();
   const filePath = `${__dirname}/${fileName}.csv`;
 
@@ -13,20 +13,20 @@ const getCSVBuffer = fileName => {
     const buffer = fs.readFileSync(filePath);
     bufferStream.end(buffer);
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 
   return bufferStream;
-}
+};
 
-const MOCK_CHANNELS = [ ...channels ];
+const MOCK_CHANNELS = [...channels];
 
 test('valid', async () => {
   const CSVBuffer = getCSVBuffer('valid');
 
   const data = await CSVParser(CSVBuffer, MOCK_CHANNELS);
 
-  expect(data).toBeDefined();
+  expect(data).toMatchSnapshot();
 });
 
 test('invalid', async () => {
