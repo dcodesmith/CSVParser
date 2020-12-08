@@ -16,7 +16,7 @@
     "@hapi/joi": "^15.1.1",
     "@types/hapi__joi": "^15.0.3",
     "@types/joi": "^14.3.3",
-    "fast-csv": "^3.4.0",
+    "fast-csv": "^4.3.6",
     "joi": "^14.3.1"
   },
   "devDependencies": {
